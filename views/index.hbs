@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Node: Express - Test App</title>
+</head>
+<body>
+  <style>
+    * {
+        font-family: Helvetica, Arial, sans-serif;
+    }
+    div {
+        display: flex;
+        align-items: center;
+        padding: 1em;
+        font-size: 1.2em;
+    }
+    div a {
+        padding-left: 0.5em;
+    }
+  </style>
+  <h1>Handlebars</h1>
+      {{#each users as |user|}}
+        <div>
+          <img src="/profilepics/{{user.username}}_sm.jpg">
+          <a href="/{{user.username}}">{{user.name.full}}</a>
+        </div>
+      {{/each}}
+</body>
+</html>

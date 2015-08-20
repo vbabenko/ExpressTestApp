@@ -4,6 +4,11 @@ var app = express();
 var fs = require('fs');
 var _ = require('lodash');
 var users = [];
+var engines = require('consolidate');
+
+app.engine('hbs', engines.handlebars);
+app.set('views', './views');
+app.set('view engine', 'hbs');
 
 fs.readFile('users.json', function(err, data) {
   if (err) throw err;
@@ -16,16 +21,14 @@ fs.readFile('users.json', function(err, data) {
 });
 
 app.get('/', function(req, res) {
-  var buffer = '';
-  users.forEach(function(user) {
-    buffer += '<a href="/' + user.username + '">' + user.name.full + '</a>' + '<br />'
-  });
-  res.send(buffer);
+  res.render('index', {users: users});
 });
+
+app.use('/profilepics/', express.static('images'));
 
 app.get('/:username', function(req, res) {
   var username = req.params.username;
-  res.send('Hello ' + username);
+  res.render('user', {username: username});
 });
 
 var server = app.listen(3000, function() {

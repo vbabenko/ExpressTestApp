@@ -10,8 +10,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "consolidate": "^0.13.1",
     "express": "^4.13.3",
     "fs": "0.0.2",
+    "handlebars": "^3.0.3",
     "lodash": "^3.10.1",
     "nodemon": "^1.4.1"
   }
